@@ -23,6 +23,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    width: "100%",
+    height: "100%",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -31,6 +33,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   darkContainer: {
-    backgroundColor: "#08081a",
+    backgroundColor: "rgb(6, 5, 14)",
   },
 });

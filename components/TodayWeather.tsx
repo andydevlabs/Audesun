@@ -5,6 +5,10 @@ type WeatherData = {
   main: {
     temp: number;
   };
+  name: string;
+  weather: {
+    description: string;
+  }[];
 };
 
 export default function TodayWeather() {
@@ -42,23 +46,73 @@ export default function TodayWeather() {
     );
   }
 
+  const name = weatherData?.name;
+  const description = weatherData?.weather[0]?.description;
   const kelvin = weatherData?.main?.temp;
   const celsius = kelvin - 273.15;
 
   return (
-    <View style={[styles.container, themeContainerStyle]}>
-      <Text style={[themeTextStyle]}>{celsius.toFixed(1)}°C</Text>
-    </View>
+    <>
+      <View style={styles.container}>
+        <Text style={[styles.title, themeTextStyle]}>Today</Text>
+        <View style={[styles.card, themeContainerStyle]}>
+          <View>
+            <Text style={[styles.cityName, themeTextStyle]}>{name}</Text>
+            <Text
+              style={[
+                styles.weatherTextDescription,
+                styles.weatherTextDescriptionDark,
+              ]}
+            >
+              {description}
+            </Text>
+          </View>
+          <View>
+            <Text style={[themeTextStyle]}>{celsius.toFixed(1)}°C</Text>
+          </View>
+        </View>
+      </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 26,
+    width: "80%",
+    textAlign: "left",
+    marginBottom: 5,
+  },
+  cityName: {
+    fontSize: 20,
+  },
+  weatherTextDescription: {
+    marginTop: 5,
+    fontSize: 12,
+  },
+  weatherTextDescriptionDark: {
+    color: "rgba(255, 255, 255, 0.31)",
+  },
   container: {
-    width: "90%",
-    height: "30%",
-    borderRadius: 30,
+    width: "100%",
+    height: "100%",
+    paddingTop: 50,
+    minHeight: "auto",
+    display: "flex",
+    flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
+  },
+  card: {
+    width: "90%",
+    minHeight: "10%",
+    borderRadius: 20,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 20,
+    margin: 5,
   },
   darkContainer: {
     backgroundColor: "rgba(129, 129, 129, 0.11)",
@@ -67,11 +121,9 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(233, 233, 233)",
   },
   darkThemeText: {
-    fontSize: 48,
     color: "rgba(255, 255, 255, 0.9)",
   },
   lightThemeText: {
-    fontSize: 48,
     color: "rgba(0, 0, 0, 0.9)",
   },
 });
