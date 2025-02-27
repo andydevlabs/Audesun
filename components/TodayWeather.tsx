@@ -5,6 +5,7 @@ import {
   View,
   useColorScheme,
   ScrollView,
+  Image
 } from "react-native";
 
 type WeatherData = {
@@ -60,7 +61,10 @@ export default function TodayWeather() {
   if (!weatherDataList.length) {
     return (
       <View>
-        <Text style={themeTextStyle}>Loading...</Text>
+        <Image 
+          source={require('../assets/weather-logo.png')}
+          style={styles.loadingLogo}
+        />
       </View>
     );
   }
@@ -152,4 +156,8 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingHorizontal: "5%",
   },
+  loadingLogo: {
+    width: 200,
+    height: 200,
+  }
 });

@@ -4,28 +4,29 @@
     "slug": "Audesun",
     "version": "1.0.0",
     "orientation": "default",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/weather.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/weather-logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#06050e"
     },
     "ios": {
       "supportsTablet": true,
-      "requireFullScreen": true
+      "requireFullScreen": true,
+      "bundleIdentifier": "com.andydevlabs.Audesun"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/weather.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.andydevlabs.Audesun",
       "screenOrientation": "default"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/weather.png"
     },
     "plugins": [
       [
