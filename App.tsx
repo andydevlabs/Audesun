@@ -1,13 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import TodayWeather from './components/TodayWeather';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, View, useColorScheme } from "react-native";
+import TodayWeather from "./components/TodayWeather";
 
 export default function App() {
-
-
+  const colorScheme = useColorScheme();
+  const themeContainerStyle =
+    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, themeContainerStyle]}>
       <TodayWeather />
       <StatusBar style="auto" />
     </View>
@@ -17,8 +18,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#08081a",
     alignItems: "center",
     justifyContent: "center",
+  },
+  lightContainer: {
+    backgroundColor: "#fff",
+  },
+  darkContainer: {
+    backgroundColor: "#08081a",
   },
 });

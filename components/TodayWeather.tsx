@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, useColorScheme } from "react-native";
 
 type WeatherData = {
   main: {
@@ -8,6 +8,12 @@ type WeatherData = {
 };
 
 export default function TodayWeather() {
+  const colorScheme = useColorScheme();
+  const themeContainerStyle =
+    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
+  const themeTextStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
   useEffect(() => {
@@ -40,23 +46,32 @@ export default function TodayWeather() {
   const celsius = kelvin - 273.15;
 
   return (
-    <View style={styles.weatherContainer}>
-      <Text style={styles.temperature}>{celsius.toFixed(1)}°C</Text>
+    <View style={[styles.container, themeContainerStyle]}>
+      <Text style={[themeTextStyle]}>{celsius.toFixed(1)}°C</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  weatherContainer: {
+  container: {
     width: "90%",
     height: "30%",
-    backgroundColor: "rgba(129, 129, 129, 0.11)",
-    borderRadius: 20,
+    borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
   },
-  temperature: {
+  darkContainer: {
+    backgroundColor: "rgba(129, 129, 129, 0.11)",
+  },
+  lightContainer: {
+    backgroundColor: "rgb(233, 233, 233)",
+  },
+  darkThemeText: {
     fontSize: 48,
     color: "rgba(255, 255, 255, 0.9)",
+  },
+  lightThemeText: {
+    fontSize: 48,
+    color: "rgba(0, 0, 0, 0.9)",
   },
 });
