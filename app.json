@@ -13,14 +13,16 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "requireFullScreen": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.andydevlabs.Audesun"
+      "package": "com.andydevlabs.Audesun",
+      "screenOrientation": "default"
     },
     "web": {
       "favicon": "./assets/favicon.png"
