@@ -27,7 +27,9 @@ export default function TodayWeather() {
   const themeTextStyle =
     colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
   const weatherTextDescriptionStyle =
-    colorScheme === "light" ? styles.weatherTextDescriptionLight : styles.weatherTextDescriptionDark;
+    colorScheme === "light"
+      ? styles.weatherTextDescriptionLight
+      : styles.weatherTextDescriptionDark;
 
   const [weatherDataList, setWeatherDataList] = useState<WeatherData[]>([]);
 
