@@ -26,6 +26,8 @@ export default function TodayWeather() {
     colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
   const themeTextStyle =
     colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+  const weatherTextDescriptionStyle =
+    colorScheme === "light" ? styles.weatherTextDescriptionLight : styles.weatherTextDescriptionDark;
 
   const [weatherDataList, setWeatherDataList] = useState<WeatherData[]>([]);
 
@@ -76,7 +78,7 @@ export default function TodayWeather() {
                 <Text
                   style={[
                     styles.weatherTextDescription,
-                    styles.weatherTextDescriptionDark,
+                    weatherTextDescriptionStyle,
                   ]}
                 >
                   {weatherData.weather[0].description}
@@ -106,6 +108,9 @@ const styles = StyleSheet.create({
   weatherTextDescription: {
     marginTop: 5,
     fontSize: 12,
+  },
+  weatherTextDescriptionLight: {
+    color: "rgba(0, 0, 0, 0.31)",
   },
   weatherTextDescriptionDark: {
     color: "rgba(255, 255, 255, 0.31)",
